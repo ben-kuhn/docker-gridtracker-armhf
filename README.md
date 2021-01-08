@@ -2,8 +2,8 @@
 I welcome any assistance with development, but please do not submit any requests for support until this notice is removed.  Thank you!
 
 # docker-gridtracker-armhf
-This is a Gridtracker container using the armhf architecture.
-This container is based off of the work of ben-kuhn's gridtracker armhf container.
+This is a GridTracker (https://gridtracker.org) container using the armhf architecture.
+This container is based off of the work of HenningThiemann's chromium armhf container.
 
 ## Build
 To build the application, you have to clone it first,
