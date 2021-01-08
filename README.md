@@ -1,47 +1,48 @@
-# docker-chromium-armhf
-This is a Google Chromium container using the armhf architecture.
-Currently, it provides widevine CDM support.
+# This container is a work in progress and it doesn't work at all right now.
+I welcome any assistance with development, but please do not submit any requests for support until this notice is removed.  Thank you!
+
+# docker-gridtracker-armhf
+This is a Gridtracker container using the armhf architecture.
+This container is based off of the work of ben-kuhn's gridtracker armhf container.
 
 ## Build
 To build the application, you have to clone it first,
 ```
 git clone
-cd docker-chromium-armhf
-docker build -t hthiemann/chromium-armhf .
+cd docker-gridtracker-armhf
+docker build -t ben-kuhn/gridtracker-armhf .
 ```
 
 ## Run the container:
-You need to enabel xhost forwarding first:
+You need to enable xhost forwarding first:
 ```
 xhost +local:docker
 ```
 If the xhost command can not be found, make sure to install it first (on manjaro, the required package is 'xorg-xhost').
 
-Although not required, it is recommended to save chromium settings in a volume, to make it persistent through container restarts.
+Although not strictly required, it is *HIGHLY* recommended to save gridtracker settings in a volume, to make it persistent through container restarts.
 ```
-docker volume create chromium_home
+docker volume create gridtracker_home
 ``` 
 After creating the volume, you can run the image using the following command:
 ```
-docker pull hthiemann/docker-chromium-armhf
+docker pull ben-kuhn/docker-gridtracker-armhf
 
 docker run --rm --privileged \
  -e DISPLAY=unix$DISPLAY \
- -v chromium_home:/home \
+ -v gridtracker_home:/home \
  -v /tmp/.X11-unix:/tmp/.X11-unix \
  -v /dev:/dev -v /run:/run \
  -v /etc/machine-id:/etc/machine-id \
  --ipc=host \
  --device /dev/dri \
  --group-add video \
- hthiemann/docker-chromium-armhf
+ ben-kuhn/docker-gridtracker-armhf
 ```
-Or simply use the script chromium-armhf:
+Or simply use the script gridtracker-armhf:
 ```
-sudo install -m 755 chromium-armhf /usr/local/bin
-chromium-armhf
+sudo install -m 755 gridtracker-armhf /usr/local/bin
+gridtracker-armhf
 ```
 
 ## Known Bugs
-- HW accelaration not working (check chrome://gpu)
-- Settings Tab crashed directly after loading
